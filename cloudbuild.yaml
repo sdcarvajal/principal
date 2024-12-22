@@ -4,6 +4,6 @@ steps:
 
 options:
   logging: CLOUD_LOGGING_ONLY  # Opción recomendada para la mayoría de los casos
-  serviceAccount: clouduaxuax@gmail.com  # Reemplaza con tu cuenta de servicio
+  # serviceAccount: clouduaxuax@gmail.com  # Reemplaza con tu cuenta de servicio
   # logsBucket: gs://your-cloud-storage-bucket  # Descomenta si quieres usar un bucket específico
   # defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET  # Descomenta si quieres usar un bucket regional
