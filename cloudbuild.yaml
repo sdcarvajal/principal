@@ -1,32 +1,28 @@
 steps:
-  # 1. Instalar dependencias (opcional, según tu entorno)
+  # Paso 1: Instalar dependencias (opcional)
   - name: 'gcr.io/cloud-builders/npm'
     entrypoint: 'npm'
     args: ['install']
-    dir: 'src'  # Cambia 'src' al directorio donde se encuentra tu aplicación
+    dir: 'src'
 
-  # 2. Ejecutar pruebas (opcional, si tu proyecto tiene pruebas configuradas)
+  # Paso 2: Ejecutar pruebas (opcional)
   - name: 'gcr.io/cloud-builders/npm'
     entrypoint: 'npm'
     args: ['test']
     dir: 'src'
 
-  # 3. Empaquetar la aplicación (si es necesario)
+  # Paso 3: Empaquetar la aplicación (si aplica)
   - name: 'gcr.io/cloud-builders/npm'
     entrypoint: 'npm'
     args: ['run', 'build']
     dir: 'src'
 
-  # 4. Desplegar la aplicación en Google App Engine
+  # Paso 4: Desplegar en Google App Engine
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'gcloud'
     args: ['app', 'deploy', '--quiet']
     dir: 'src'
 
-# Configuración de imágenes (opcional)
-images:
-  - 'gcr.io/$PROJECT_ID/my-app'  # Sustituye 'my-app' por el nombre de tu aplicación
-
-# Opcional: Substituciones de variables
-substitutions:
-  _REGION: 'us-central'
+# Configurar opciones de compilación
+options:
+  logging: CLOUD_LOGGING_ONLY  # Los logs se almacenan solo en Cloud Logging
