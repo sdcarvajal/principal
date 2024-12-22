@@ -1,16 +1,9 @@
 steps:
-- name: 'gcr.io/cloud-builders/npm'
-  args: ['install']
-- name: 'gcr.io/cloud-builders/npm'
-  args: ['run', 'test']
 - name: 'gcr.io/cloud-builders/docker'
-  args:
-  - 'build'
-  - '-t'
-  - 'gcr.io/$PROJECT_ID/my-app'
-  - '.'
-- name: 'gcr.io/cloud-builders/gcloud'
-  args:
-  - 'app'
-  - 'deploy'
-  - '.'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/my-node-app:latest', '.']
+
+options:
+  logging: CLOUD_LOGGING_ONLY  # Opción recomendada para la mayoría de los casos
+  serviceAccount: clouduaxuax@gmail.com  # Reemplaza con tu cuenta de servicio
+  # logsBucket: gs://your-cloud-storage-bucket  # Descomenta si quieres usar un bucket específico
+  # defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET  # Descomenta si quieres usar un bucket regional
